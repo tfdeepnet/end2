@@ -12,6 +12,10 @@
 
 # Build a neural network to add an image of a number and a number 
 
+## Abstract
+
+An convolution neural network is is used to process an image input to get the predicted number label.This predicted label and an integer between 0 - 9 is fed to 4 linear layers to get a 1x20 vector output.The index of the largest value is then used as the predicted sum of the 2 numbers.The predicted sum is then matched with actual sum of the 2 numbers , to calculate the loss and adjust the model weights iteratively.After few epochs the loss will reduce and predicted sum will converge with actual sum.
+
 ## Data generation strategy 
 
 ### Dataset :
@@ -41,7 +45,7 @@ Given the problem statement , the following approach is used to achieve the resu
 
 * The model returns the predicted sum of 2 numbers and we have the actual sum of 2 number.
 * **Crossentropy** loss function is used to calculate the loss, why? , because this is a multiclassification problem - there are 19 classes , starting from 0 - 18.
-* after calculating the loss , the model will back propagate to adjust the weights and find the new loss iteratively.
+* after calculating the loss , the model will back propagate to adjust the weights and minimize the loss iteratively.
 * in the model tensor.cat is used to combine the 2 inputs , this helps in keeping the graph intact.So during back propagation, the error gradient w.r.t each weight can be calculated and the model will perform better.
 
 ## Model summary
