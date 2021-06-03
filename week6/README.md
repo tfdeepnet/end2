@@ -154,7 +154,7 @@ A future project will be to tune the model using other hyper-parameters  like nu
 
     +  Output - modified sentence
 
-13. **random_insertion(self , sentence, howmanytimes = 3): **
+13. **random_insertion(self , sentence, howmanytimes = 3):**
 
     This is a wrapper method which call the removestop word and insertSynonymNTimes.
 
