@@ -207,6 +207,29 @@ A graph showing the plot of loss and accuracy across 20 epochs is shown below.
 
 ## Model test output for ten record
 
+True label: negative
+
+Predicted label: very negative
+
+Input Sentence: **The movie of n't think much us its characters , its . , or of does protagonist**
+
+---------------------------------
+
+True label: negative
+
+Predicted label: neutral
+
+Input Sentence: **bake cardboard ask ask ask call_for call_for call_for chew .**
+
+---------------------------------
+
+True label: neutral
+
+Predicted label: neutral
+
+Input Sentence: **It 's all pretty tame .**
+
+---------------------------------
 
 True label: very positive
 
