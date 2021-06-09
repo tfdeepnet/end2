@@ -13,13 +13,21 @@ Wednesday, June 9, 2021 17:56:27
 
 1. Embedding layer
 2. Encoder  
+
     a. which will take one word at a time and the last hidden state
+    
     b. process them till end of the sentence.
+    
     c. return a single vector
+    
 3. Decoder 
+
     a. take hidden state of one word from the encoder + last hidden state of the decoder 
+    
     b. process them till end of the sentence.
+    
     c. return last hidden state of the decoder
+    
 4. The final hidden state of the decoder is passed to a linear layer to predict the label    
 
 ## Abstract
@@ -57,6 +65,7 @@ The model has
 4.   **Decoder**
 
      a. The hidden states from step 1 are vertically stacked and then reshaped to - sequence length x batch size x  embedded dimension.
+     
      b. The hidden state of each word from the encoder and the last hidden state of the decoder is fed to  LSTMCell in a loop.
 
 5.   Output of the decoder is fed to a linear layer to return 3 class values.
