@@ -32,7 +32,7 @@ Wednesday, June 9, 2021 17:56:27
 
 ## Abstract
 
-The tweet dataset is trained using an encoder decoder model.Each word is fed to a lstm cell in the encoder , the hidden states are then combined to create a single vector.Then the hidden vector for each word from the encoder along with the last hidden state of the decoder is fed to the decoder.The final hidden state of the decoder is passed to a linear layer to get the class prediction.The model stagnated at a validation accuracy of 68.3%.Further work is required to understand this.
+The tweet dataset is trained using an encoder decoder model.Each word is fed to a lstm cell in the encoder , the hidden states are then combined to create a single vector.Then the hidden vector for each word from the encoder along with the last hidden state of the decoder is fed to the decoder.The final hidden state of the decoder is passed to a linear layer to get the class prediction.The model stagnated at a validation accuracy of 68.3%.Further work is required to understand this.Since this is a basic encoder decoder model , future work will include adding an attention mechanism to get the context vector when decoding each word in the sentence.
 
 ## Dataset :
 
