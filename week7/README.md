@@ -22,7 +22,7 @@ Wednesday, June 10, 2021 17:56:27
     
 3. Decoder 
 
-    a. take hidden state of one word from the encoder + last hidden state of the decoder 
+    a. take context vector of each word from the attention mechanism + last hidden state of the decoder 
     
     b. process them till end of the sentence.
     
