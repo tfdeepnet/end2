@@ -92,7 +92,7 @@ The result is stored in a sentence label category data frame
 
 8.  **random_swap**(self , sentence, n=3): This method randomly swaps words in a sentence.There is configurable parameter **n** which determines how many words in the sentence will be swapped.
 
-9.  **getReTranslatedSentence**(self , sentence): This method uses google translation package to translate the sentence to a random destination language.Which is then retranslated to english.
+9.  **getReTranslatedSentence**(self , sentence): This method uses google translation package to translate the sentence to a random destination language.Which is then translated to english.
 
 10. **random_insertion**(self , sentence, howmanytimes = 3): This is a wrapper method which call the removestop word and insertSynonymNTimes method.There is a configurable parameter which determines how many times a synonym will be repeated in the sentence.
 
@@ -104,7 +104,7 @@ The result is stored in a sentence label category data frame
 
 3.  **insertSynonymNTimes**(self , input , numTimes):
 
-This method is used to insert synonym for a word **n** number of times , this is a way to emphasise some words in the sentence.Wordnet library is used to get synonym for a word.The list of synonym is narrowed down based on domain.SInce these sentences are about movie , so the domain is set to celluloid etc.More about domain information can be found at domains - https://wndomains.fbk.eu/hierarchy.html
+This method is used to insert synonym for a word **n** number of times , this is a way to emphasize some words in the sentence.Wordnet library is used to get synonym for a word.The list of synonym is narrowed down based on domain.SInce these sentences are about movie , so the domain is set to celluloid etc.More about domain information can be found at domains - https://wndomains.fbk.eu/hierarchy.html
 
 
 
@@ -116,7 +116,7 @@ The original dataset has 11286 review comments , four data augmentation methods
 +  random swap
 +  random deletion
 +  random insertion
-+  retranslate to english using google translate
++  translate to english using google translate
 
 are applied to increase the dataset size to 56430 records.The augmented dataset is then saved for use during model training/validation.
 
@@ -468,7 +468,7 @@ This is a wrapper class to call the encoder and decoder class
 
 * The output of each iteration is stored in an array
 
-* A threshhold limit is set to decide whether to pick the max from the output returned by the decoder or the next word of the sentence in the next iteration.
+* A threshold limit is set to decide whether to pick the max from the output returned by the decoder or the next word of the sentence in the next iteration.
 
 * The loop continues till the end of the sentence
 
