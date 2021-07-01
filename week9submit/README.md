@@ -62,7 +62,7 @@ This class returns 1D vector of prediction and the last hidden and cell state
 
   * The last hidden state of the decoder is paired with output of the encoder.
 
-  * Each pair is passed through two linear layer to get the weight for that word
+  * Each pair is passed through two linear layer to get the weight of encoder output w.r.t that pair of encoder output and hidden state.
 
   * All the weights are then stacked vertically and reshaped to get the relative weight of each word w.r.t the sentence using a softmax function.
 
