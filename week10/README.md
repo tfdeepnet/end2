@@ -15,7 +15,7 @@ Sunday, 11 July 2021
    
 *  BLEU (Bilingual Evaluation Understudy)
 
-*  Perplexity (explain whether you are using bigram, trigram, or something else, what does your PPL score represent?)
+*  Perplexity 
     
 *  BERTScore
 
