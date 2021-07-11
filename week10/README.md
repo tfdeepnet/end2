@@ -191,7 +191,7 @@ A cosine similarity plot for a pair of candidate and target sentence is shown be
 ![bin=20](images/bert/similaritymatrix.png)
 
 
-## Perplexity 
+## Perplexity using sliding window
 
 Perplexity (PPL) is one of the most common metrics for evaluating language models. Before diving in, we should note that the metric applies specifically to classical language models (sometimes called autoregressive or causal language models) and is not well defined for masked language models.
 
@@ -222,21 +222,21 @@ Some observations in this implementation
 
 *  The perplexity of the model was worsening after every epoch.
 
-*  THe model suddenly started taking very long time to complete 1 epoch , it increased from 4 mins to 42 mins,
+*  The model suddenly started taking very long time to complete 1 epoch , it increased from 4 mins to 42 mins,
 
 
 A plot of model PPL is given below
 
 ![](images/perplexity/ppl.png)
 
-The validation PPL is increasing , maybe tuning has to be done in terms of size of the sliding winding.
+The validation PPL is increasing , maybe tuning has to be done in terms of size of the sliding window.
 
 A plot of model loss also shows a similar trend
 
 ![](images/perplexity/loss.png)
 
 
-## Last 2-3 epochs/stage logs for all of your 4 metrics separately (A, B, C, D) 
+## Last 2-3 epochs/stage logs for 4 metrics 
 
 
 and describe your understanding about the numbers you're seeing, are they good/bad? Why?
