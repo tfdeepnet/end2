@@ -146,7 +146,7 @@ The model performance improved with pre trained embedding weights
 | without pre- trained embedding | **0.6437** | 23m 42s |  2803 |
 | with pre- trained embedding | **0.4985** | 77m 23s |  400005 |
 
-As evident from the table above , the corpus of english words 200 times more in the case of pre trained embedding, hence the execution time was high , but the model performed better with pre trained embeddings.
+As evident from the table above , the corpus of english words is 200 times more in the case of pre trained embedding, hence the execution time was high , but the model performed better with pre trained embeddings.
 
 
 ### Test logs
