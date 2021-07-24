@@ -72,7 +72,7 @@ The attention mechanism is embedded in the decoder
 
 * The context vector created above along with the previous decoder hidden state is fed to the LSTM layer.
 
-* a linear layer is created to transform the context vector and hidden vector match the input dimension of LSTM layer.
+* a linear layer is created to transform the context vector and hidden vector to match the input dimension of LSTM layer.
 
 * The output of the LSTM layer is passed through an activation function to add non-linearity.
 
