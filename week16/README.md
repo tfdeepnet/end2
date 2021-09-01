@@ -123,6 +123,18 @@ and then the generator produces a distribution for the next output token for eac
 document, before marginalizing, and repeating the process with the following output token, Formally, we define: [[3]](#3)
 
  <img src="https://render.githubusercontent.com/render/math?math=\Large \qquad p_{Token}(y|x) \approx \prod_{i}^n \sum_{z\in top-k(p(.|x))}  p(z|x)p(y_{i}|x,z,y_{1:i-1})"> 
+
+
+#### pre trained BART as generator
+
+The generator component  <img src="https://render.githubusercontent.com/render/math?math=\qquad p(y_{i}|x,z,y_{1:i-1})"> could be modelled using any encoder-decoder. I plan to use
+BART-large , a pre-trained seq2seq transformer with 400M parameters. To combine the
+input x with the retrieved content z when generating from BART, we simply concatenate them. BART was pre-trained using a denoising objective and a variety of different noising functions. 
+
+#### Decoding
+
+At test time, to approximate  <img src="https://render.githubusercontent.com/render/math?math=\qquad arg max_{y} p(y|x)"> in Token approach. It can be seen as a standard, autoregressive seq2seq generator with transition probability:  <img src="https://render.githubusercontent.com/render/math?math=\Large \qquad p(y_{i}|x,y_{1:i-1}) = \sum_{z\in top-k(p(.|x))}  p(z_{i}|x)p(y_{i}|x,z_{i},y_{1:i-1})"> we can plug  <img src="https://render.githubusercontent.com/render/math?math=\Large \qquad p(y_{i}|x,y_{1:i-1})"> into a standard beam decoder. [[3]](#3)
+
  <img src=""> 
 
  <img src=""> 
