@@ -49,7 +49,7 @@ the dot product of their vectors.
 
 ![](images/similarity.png)
 
- <img src="https://render.githubusercontent.com/render/math?math=sim(q,p)%20=E_{Q}(q)^{T}E_{P}(p)"> 
+ <img src="https://render.githubusercontent.com/render/math?math=\Large sim(q,p)%20=E_{Q}(q)^{T}E_{P}(p)"> 
 
 The simpler inner product function is used for similarity calculation to improve the
 dense passage retriever by learning better encoders.
