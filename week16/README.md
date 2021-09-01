@@ -168,7 +168,7 @@ calculate similarity of predicted y vs actual y to calculate the model loss.
 
 #### training logs for a  sample dataset
 
-An end to end dpr model will be refactored to suit the capstone dataset , for now the end to end dpr model was run on a test dataset to check for any issue.Later it will be modified to fit the requirrement of this project. a sample of train and evaluation log is given below for reference.
+An end to end dpr model will be refactored to suit the capstone dataset , for now the end to end dpr model was run on a test dataset to check for any issue.Later it will be modified to fit the requirement of this project. a sample of train and evaluation log is given below for reference.
 
 
 ##### train and eval logs
