@@ -103,15 +103,14 @@ Ledell Wu, Sergey Edunov, Danqi Chenz, Wen-tau Yih}
 
 ## References
 <a id="1">[1]</a> 
-@misc{lewis2021retrievalaugmented,
-      title={Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks}, 
-      author={Patrick Lewis and Ethan Perez and Aleksandra Piktus and Fabio Petroni and Vladimir Karpukhin and Naman Goyal and Heinrich Küttler and Mike Lewis and Wen-tau Yih and Tim Rocktäschel and Sebastian Riedel and Douwe Kiela},
-      year={2021},
-      eprint={2005.11401},
+@misc{karpukhin2020dense,
+      title={Dense Passage Retrieval for Open-Domain Question Answering}, 
+      author={Vladimir Karpukhin and Barlas Oguz and Sewon Min and Patrick Lewis and Ledell Wu and Sergey Edunov and Danqi Chen and Wen-tau Yih},
+      year={2020},
+      eprint={2004.04906},
       archivePrefix={arXiv},
       primaryClass={cs.CL}
 }
-
 
 
  <img src="https://render.githubusercontent.com/render/math?math=e^{i %2B\pi} =x%2B1"> 
