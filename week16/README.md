@@ -165,6 +165,344 @@ calculate similarity of predicted y vs actual y to calculate the model loss.
 * train the query encoder
 
 * train the generator
+
+#### training logs for a  sample dataset
+
+An end to end dpr model will be refactored to suit the capstone dataset , for now the end to end dpr model was run on a test dataset to check for any issue.Later it will be modified to fit the requirrement of this project. a sample of train and evaluation log is given below for reference.
+
+
+##### train and eval logs
+
+Initialized host ae8ce1557aeb as d.rank -1 on device=cuda, n_gpu=1, world size=1
+16-bits training: False 
+ **************** CONFIGURATION **************** 
+adam_betas                        (0.9, 0.999)
+adam_eps                          1e-08
+batch_size                        2
+checkpoint_file_name              dpr_biencoder
+ctx_chunk_size                    8
+dev_batch_size                    4
+dev_file                          /content/dprdevdata]/data/retriever/nq-dev.json
+device                            cuda
+distributed_world_size            1
+do_lower_case                     False
+dropout                           0.1
+encoder_model_type                hf_bert
+eval_per_epoch                    1
+fix_ctx_encoder                   False
+fp16                              False
+fp16_opt_level                    O1
+global_loss_buf_sz                150000
+grad_cache                        False
+gradient_accumulation_steps       1
+hard_negatives                    1
+learning_rate                     1e-05
+local_rank                        -1
+log_batch_step                    100
+max_grad_norm                     1.0
+model_file                        None
+n_gpu                             1
+no_cuda                           False
+num_train_epochs                  3.0
+other_negatives                   0
+output_dir                        /content/dprdevdata]/chkpnt
+pretrained_file                   None
+pretrained_model_cfg              bert-base-uncased
+projection_dim                    0
+q_chunk_size                      16
+seed                              0
+sequence_length                   512
+shuffle_positive_ctx              False
+train_file                        /content/dprdevdata]/data/retriever/nq-dev.json
+train_files_upsample_rates        None
+train_rolling_loss_step           100
+val_av_rank_bsz                   128
+val_av_rank_hard_neg              30
+val_av_rank_max_qs                10000
+val_av_rank_other_neg             30
+val_av_rank_start_epoch           10000
+warmup_steps                      100
+weight_decay                      0.0
+ **************** CONFIGURATION **************** 
+***** Initializing components for training *****
+Checkpoint files []
+PyTorch version 1.9.0+cu102 available.
+TensorFlow version 2.6.0 available.
+Lock 140211685560656 acquired on /root/.cache/torch/transformers/4dad0251492946e18ac39290fcfe91b89d370fee250efe9521476438fe8ca185.7156163d5fdc189c3016baca0775ffce230789d7fa2a42ef516483e4ca884517.lock
+https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-config.json not found in cache or force_download set to True, downloading to /root/.cache/torch/transformers/tmpbrjnlo7e
+Downloading: 100% 433/433 [00:00<00:00, 427kB/s]
+storing https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-config.json in cache at /root/.cache/torch/transformers/4dad0251492946e18ac39290fcfe91b89d370fee250efe9521476438fe8ca185.7156163d5fdc189c3016baca0775ffce230789d7fa2a42ef516483e4ca884517
+creating metadata file for /root/.cache/torch/transformers/4dad0251492946e18ac39290fcfe91b89d370fee250efe9521476438fe8ca185.7156163d5fdc189c3016baca0775ffce230789d7fa2a42ef516483e4ca884517
+Lock 140211685560656 released on /root/.cache/torch/transformers/4dad0251492946e18ac39290fcfe91b89d370fee250efe9521476438fe8ca185.7156163d5fdc189c3016baca0775ffce230789d7fa2a42ef516483e4ca884517.lock
+loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-config.json from cache at /root/.cache/torch/transformers/4dad0251492946e18ac39290fcfe91b89d370fee250efe9521476438fe8ca185.7156163d5fdc189c3016baca0775ffce230789d7fa2a42ef516483e4ca884517
+Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "type_vocab_size": 2,
+  "vocab_size": 30522
+}
+
+Lock 140209789913552 acquired on /root/.cache/torch/transformers/f2ee78bdd635b758cc0a12352586868bef80e47401abe4c4fcc3832421e7338b.36ca03ab34a1a5d5fa7bc3d03d55c4fa650fed07220e2eeebc06ce58d0e9a157.lock
+https://cdn.huggingface.co/bert-base-uncased-pytorch_model.bin not found in cache or force_download set to True, downloading to /root/.cache/torch/transformers/tmpy1lold03
+Downloading: 100% 440M/440M [00:07<00:00, 60.2MB/s]
+storing https://cdn.huggingface.co/bert-base-uncased-pytorch_model.bin in cache at /root/.cache/torch/transformers/f2ee78bdd635b758cc0a12352586868bef80e47401abe4c4fcc3832421e7338b.36ca03ab34a1a5d5fa7bc3d03d55c4fa650fed07220e2eeebc06ce58d0e9a157
+creating metadata file for /root/.cache/torch/transformers/f2ee78bdd635b758cc0a12352586868bef80e47401abe4c4fcc3832421e7338b.36ca03ab34a1a5d5fa7bc3d03d55c4fa650fed07220e2eeebc06ce58d0e9a157
+Lock 140209789913552 released on /root/.cache/torch/transformers/f2ee78bdd635b758cc0a12352586868bef80e47401abe4c4fcc3832421e7338b.36ca03ab34a1a5d5fa7bc3d03d55c4fa650fed07220e2eeebc06ce58d0e9a157.lock
+loading weights file https://cdn.huggingface.co/bert-base-uncased-pytorch_model.bin from cache at /root/.cache/torch/transformers/f2ee78bdd635b758cc0a12352586868bef80e47401abe4c4fcc3832421e7338b.36ca03ab34a1a5d5fa7bc3d03d55c4fa650fed07220e2eeebc06ce58d0e9a157
+All model checkpoint weights were used when initializing HFBertEncoder.
+
+All the weights of HFBertEncoder were initialized from the model checkpoint at bert-base-uncased.
+If your task is similar to the task the model of the ckeckpoint was trained on, you can already use HFBertEncoder for predictions without further training.
+loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-config.json from cache at /root/.cache/torch/transformers/4dad0251492946e18ac39290fcfe91b89d370fee250efe9521476438fe8ca185.7156163d5fdc189c3016baca0775ffce230789d7fa2a42ef516483e4ca884517
+Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "type_vocab_size": 2,
+  "vocab_size": 30522
+}
+
+loading weights file https://cdn.huggingface.co/bert-base-uncased-pytorch_model.bin from cache at /root/.cache/torch/transformers/f2ee78bdd635b758cc0a12352586868bef80e47401abe4c4fcc3832421e7338b.36ca03ab34a1a5d5fa7bc3d03d55c4fa650fed07220e2eeebc06ce58d0e9a157
+All model checkpoint weights were used when initializing HFBertEncoder.
+
+All the weights of HFBertEncoder were initialized from the model checkpoint at bert-base-uncased.
+If your task is similar to the task the model of the ckeckpoint was trained on, you can already use HFBertEncoder for predictions without further training.
+Lock 140209764791248 acquired on /root/.cache/torch/transformers/26bc1ad6c0ac742e9b52263248f6d0f00068293b33709fae12320c0e35ccfbbb.542ce4285a40d23a559526243235df47c5f75c197f04f37d1a0c124c32c9a084.lock
+https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-vocab.txt not found in cache or force_download set to True, downloading to /root/.cache/torch/transformers/tmpumx_yoz1
+Downloading: 100% 232k/232k [00:00<00:00, 954kB/s]
+storing https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-vocab.txt in cache at /root/.cache/torch/transformers/26bc1ad6c0ac742e9b52263248f6d0f00068293b33709fae12320c0e35ccfbbb.542ce4285a40d23a559526243235df47c5f75c197f04f37d1a0c124c32c9a084
+creating metadata file for /root/.cache/torch/transformers/26bc1ad6c0ac742e9b52263248f6d0f00068293b33709fae12320c0e35ccfbbb.542ce4285a40d23a559526243235df47c5f75c197f04f37d1a0c124c32c9a084
+Lock 140209764791248 released on /root/.cache/torch/transformers/26bc1ad6c0ac742e9b52263248f6d0f00068293b33709fae12320c0e35ccfbbb.542ce4285a40d23a559526243235df47c5f75c197f04f37d1a0c124c32c9a084.lock
+loading file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-vocab.txt from cache at /root/.cache/torch/transformers/26bc1ad6c0ac742e9b52263248f6d0f00068293b33709fae12320c0e35ccfbbb.542ce4285a40d23a559526243235df47c5f75c197f04f37d1a0c124c32c9a084
+Reading file /content/dprdevdata]/data/retriever/nq-dev.json
+Aggregated data size: 6515
+Total cleaned data size: 6515
+  Total iterations per epoch=3258
+ Total updates=9774
+  Eval step = 3258
+***** Training *****
+***** Epoch 0 *****
+Epoch: 0: Step: 1/3258, loss=20.879175, lr=0.000000
+Train batch 100
+Avg. loss per last 100 batches: 7.063016
+Epoch: 0: Step: 101/3258, loss=3.845323, lr=0.000010
+Train batch 200
+Avg. loss per last 100 batches: 1.425502
+Epoch: 0: Step: 201/3258, loss=3.341021, lr=0.000010
+Train batch 300
+Avg. loss per last 100 batches: 0.856511
+Epoch: 0: Step: 301/3258, loss=0.453331, lr=0.000010
+Train batch 400
+Avg. loss per last 100 batches: 0.840076
+Epoch: 0: Step: 401/3258, loss=0.182937, lr=0.000010
+Train batch 500
+Avg. loss per last 100 batches: 0.836007
+Epoch: 0: Step: 501/3258, loss=0.451287, lr=0.000010
+Train batch 600
+Avg. loss per last 100 batches: 0.727061
+Epoch: 0: Step: 601/3258, loss=0.101555, lr=0.000009
+Train batch 700
+Avg. loss per last 100 batches: 0.715019
+Epoch: 0: Step: 701/3258, loss=0.779977, lr=0.000009
+Train batch 800
+Avg. loss per last 100 batches: 0.665379
+Epoch: 0: Step: 801/3258, loss=0.000054, lr=0.000009
+Train batch 900
+Avg. loss per last 100 batches: 0.554073
+Epoch: 0: Step: 901/3258, loss=0.652408, lr=0.000009
+Train batch 1000
+Avg. loss per last 100 batches: 0.699420
+Epoch: 0: Step: 1001/3258, loss=0.006642, lr=0.000009
+Train batch 1100
+Avg. loss per last 100 batches: 0.736018
+Epoch: 0: Step: 1101/3258, loss=3.435383, lr=0.000009
+Train batch 1200
+Avg. loss per last 100 batches: 0.612892
+Epoch: 0: Step: 1201/3258, loss=0.002450, lr=0.000009
+Train batch 1300
+Avg. loss per last 100 batches: 0.694482
+Epoch: 0: Step: 1301/3258, loss=0.539028, lr=0.000009
+Train batch 1400
+Avg. loss per last 100 batches: 0.786224
+Epoch: 0: Step: 1401/3258, loss=0.022790, lr=0.000009
+Train batch 1500
+Avg. loss per last 100 batches: 0.482405
+Epoch: 0: Step: 1501/3258, loss=0.040423, lr=0.000009
+Train batch 1600
+Avg. loss per last 100 batches: 0.487796
+Epoch: 0: Step: 1601/3258, loss=0.008157, lr=0.000008
+Train batch 1700
+Avg. loss per last 100 batches: 0.753921
+Epoch: 0: Step: 1701/3258, loss=0.001043, lr=0.000008
+Train batch 1800
+Avg. loss per last 100 batches: 0.702689
+Epoch: 0: Step: 1801/3258, loss=0.323058, lr=0.000008
+Train batch 1900
+Avg. loss per last 100 batches: 0.670858
+Epoch: 0: Step: 1901/3258, loss=0.534937, lr=0.000008
+Epoch: 0: Step: 2001/3258, loss=1.180499, lr=0.000008
+Train batch 2100
+Avg. loss per last 100 batches: 0.558530
+Epoch: 0: Step: 2101/3258, loss=0.003663, lr=0.000008
+Train batch 2200
+Avg. loss per last 100 batches: 0.578332
+Epoch: 0: Step: 2201/3258, loss=0.718293, lr=0.000008
+Train batch 2300
+Avg. loss per last 100 batches: 0.623423
+Epoch: 0: Step: 2301/3258, loss=0.096823, lr=0.000008
+Train batch 2400
+Avg. loss per last 100 batches: 0.729157
+Epoch: 0: Step: 2401/3258, loss=0.107544, lr=0.000008
+Train batch 2500
+Avg. loss per last 100 batches: 0.408302
+Epoch: 0: Step: 2501/3258, loss=0.095298, lr=0.000008
+Train batch 2600
+Avg. loss per last 100 batches: 0.536457
+Epoch: 0: Step: 2601/3258, loss=0.033315, lr=0.000007
+Train batch 2700
+Avg. loss per last 100 batches: 0.444174
+Epoch: 0: Step: 2701/3258, loss=0.119821, lr=0.000007
+Train batch 2800
+Avg. loss per last 100 batches: 0.374485
+Epoch: 0: Step: 2801/3258, loss=7.624740, lr=0.000007
+Train batch 2900
+Avg. loss per last 100 batches: 0.842974
+Epoch: 0: Step: 2901/3258, loss=0.000828, lr=0.000007
+Train batch 3000
+Avg. loss per last 100 batches: 0.526776
+Epoch: 0: Step: 3001/3258, loss=0.022878, lr=0.000007
+Train batch 3100
+Avg. loss per last 100 batches: 0.435324
+Epoch: 0: Step: 3101/3258, loss=0.003947, lr=0.000007
+Train batch 3200
+Avg. loss per last 100 batches: 0.605610
+Epoch: 0: Step: 3201/3258, loss=0.000000, lr=0.000007
+Finished iterating, iteration=3258, shard=0
+Validation: Epoch: 0 Step: 3258/3258
+NLL validation ...
+Reading file /content/dprdevdata]/data/retriever/nq-dev.json
+Aggregated data size: 6515
+Total cleaned data size: 6515
+Eval step: 99 , used_time=46.501453 sec., loss=0.112810 
+Eval step: 199 , used_time=92.548126 sec., loss=0.000004 
+Eval step: 299 , used_time=138.959932 sec., loss=1.898458 
+Eval step: 399 , used_time=185.267789 sec., loss=0.073006 
+Eval step: 499 , used_time=231.151421 sec., loss=0.002159 
+Eval step: 599 , used_time=277.626225 sec., loss=2.268908 
+Eval step: 699 , used_time=323.639210 sec., loss=0.857368 
+Eval step: 799 , used_time=370.085279 sec., loss=5.117107 
+Eval step: 899 , used_time=416.501861 sec., loss=0.295370 
+Eval step: 999 , used_time=462.787835 sec., loss=3.934539 
+Eval step: 1099 , used_time=508.942142 sec., loss=0.146630 
+Eval step: 1199 , used_time=555.113686 sec., loss=3.845603 
+Eval step: 1299 , used_time=601.293154 sec., loss=0.729770 
+Eval step: 1399 , used_time=647.605483 sec., loss=2.340352 
+Eval step: 1499 , used_time=694.008654 sec., loss=0.328067 
+Eval step: 1599 , used_time=740.507991 sec., loss=0.707699 
+NLL Validation: loss = 0.735069. correct prediction ratio  5307/6516 ~  0.814457
+Saved checkpoint at /content/dprdevdata]/chkpnt/dpr_biencoder.0.3258
+Saved checkpoint to /content/dprdevdata]/chkpnt/dpr_biencoder.0.3258
+New Best validation checkpoint /content/dprdevdata]/chkpnt/dpr_biencoder.0.3258
+NLL validation ...
+Reading file /content/dprdevdata]/data/retriever/nq-dev.json
+Aggregated data size: 6515
+Total cleaned data size: 6515
+Eval step: 99 , used_time=47.291642 sec., loss=0.112810 
+Eval step: 199 , used_time=92.924058 sec., loss=0.000004 
+Eval step: 299 , used_time=139.353049 sec., loss=1.898458 
+Eval step: 399 , used_time=185.509704 sec., loss=0.073006 
+Eval step: 499 , used_time=231.859500 sec., loss=0.002159 
+Eval step: 599 , used_time=278.384533 sec., loss=2.268908 
+Eval step: 699 , used_time=324.808600 sec., loss=0.857368 
+Eval step: 799 , used_time=371.256480 sec., loss=5.117107 
+Eval step: 899 , used_time=417.649062 sec., loss=0.295370 
+Eval step: 999 , used_time=463.921428 sec., loss=3.934539 
+Eval step: 1099 , used_time=510.205219 sec., loss=0.146630 
+Eval step: 1199 , used_time=556.502730 sec., loss=3.845603 
+Eval step: 1299 , used_time=602.778700 sec., loss=0.729770 
+Eval step: 1399 , used_time=649.054720 sec., loss=2.340352 
+Eval step: 1499 , used_time=695.357217 sec., loss=0.328067 
+Eval step: 1599 , used_time=741.659300 sec., loss=0.707699 
+NLL Validation: loss = 0.735069. correct prediction ratio  5307/6516 ~  0.814457
+Saved checkpoint at /content/dprdevdata]/chkpnt/dpr_biencoder.0.3258
+Saved checkpoint to /content/dprdevdata]/chkpnt/dpr_biencoder.0.3258
+Av Loss per epoch=0.848116
+epoch total correct predictions=5272
+***** Epoch 1 *****
+Epoch: 1: Step: 1/3258, loss=0.040184, lr=0.000007
+Train batch 100
+Avg. loss per last 100 batches: 0.288920
+Epoch: 1: Step: 101/3258, loss=1.093456, lr=0.000007
+Train batch 200
+Avg. loss per last 100 batches: 0.489996
+Epoch: 1: Step: 201/3258, loss=0.095779, lr=0.000007
+Train batch 300
+Avg. loss per last 100 batches: 0.454743
+Epoch: 1: Step: 301/3258, loss=0.000084, lr=0.000006
+Train batch 400
+Avg. loss per last 100 batches: 0.254579
+Epoch: 1: Step: 401/3258, loss=0.000007, lr=0.000006
+Train batch 500
+Avg. loss per last 100 batches: 0.455086
+Epoch: 1: Step: 501/3258, loss=0.000008, lr=0.000006
+Train batch 600
+Avg. loss per last 100 batches: 0.409794
+Epoch: 1: Step: 601/3258, loss=0.001803, lr=0.000006
+Train batch 700
+Avg. loss per last 100 batches: 0.430022
+Epoch: 1: Step: 701/3258, loss=0.000130, lr=0.000006
+Train batch 800
+Avg. loss per last 100 batches: 0.444044
+Epoch: 1: Step: 801/3258, loss=6.862292, lr=0.000006
+Train batch 900
+Avg. loss per last 100 batches: 0.576271
+Epoch: 1: Step: 901/3258, loss=0.000055, lr=0.000006
+Train batch 1000
+Avg. loss per last 100 batches: 0.334279
+Epoch: 1: Step: 1001/3258, loss=0.009849, lr=0.000006
+Train batch 1100
+Avg. loss per last 100 batches: 0.227425
+Epoch: 1: Step: 1101/3258, loss=0.000199, lr=0.000006
+Train batch 1200
+Avg. loss per last 100 batches: 0.447041
+Epoch: 1: Step: 1201/3258, loss=0.698287, lr=0.000005
+Train batch 1300
+Avg. loss per last 100 batches: 0.367504
+Epoch: 1: Step: 1301/3258, loss=0.002227, lr=0.000005
+Train batch 1400
+Avg. loss per last 100 batches: 0.253053
+Epoch: 1: Step: 1401/3258, loss=0.000101, lr=0.000005
+Train batch 1500
+Avg. loss per last 100 batches: 0.234293
+Epoch: 1: Step: 1501/3258, loss=0.617722, lr=0.000005
+
  
 ##### References
 <a id="1">[1]</a> 
