@@ -173,6 +173,7 @@ An end to end dpr model will be refactored to suit the capstone dataset , for no
 
 ##### train and eval logs
 
+```
 Initialized host ae8ce1557aeb as d.rank -1 on device=cuda, n_gpu=1, world size=1
 16-bits training: False 
  **************** CONFIGURATION **************** 
@@ -502,7 +503,7 @@ Epoch: 1: Step: 1401/3258, loss=0.000101, lr=0.000005
 Train batch 1500
 Avg. loss per last 100 batches: 0.234293
 Epoch: 1: Step: 1501/3258, loss=0.617722, lr=0.000005
-
+```
  
 ##### References
 <a id="1">[1]</a> 
