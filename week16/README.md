@@ -111,8 +111,18 @@ The model leverage two components:
 * a generator
 
  <img src="https://render.githubusercontent.com/render/math?math=\qquad p(y_{i}|x,z,y_{1:i-1})"> that generates a current token based on a context of the previous i - 1 tokens  <img src="https://render.githubusercontent.com/render/math?math=\qquad y_{1:i-1})"> , the original
-input x and a retrieved passage z.
-To train the retriever and generator end-to-end, we treat the retrieved document as a latent variable
+input x and a retrieved passage z.[[3]](#3)
+To train the retriever and generator end-to-end, we treat the retrieved document as a latent variable.We marginalize the latent documents using token, which can predict each target token based on a different document. 
+
+#### Token generator model
+
+Token model we draw a different latent document for each target token and marginalize
+accordingly. This allows the generator to choose content from several documents when
+producing an answer. Concretely, the top K documents are retrieved using the retriever,
+and then the generator produces a distribution for the next output token for each
+document, before marginalizing, and repeating the process with the following output token, Formally, we define: [[3]](#3)
+
+ <img src="https://render.githubusercontent.com/render/math?math=\Large \qquad p_{Token}(y|x) \approx \prod_{i}^n \sum_{z\in top-k(p(.|x))}  p(z|x)p(y_{i}|x,z,y_{1:i-1})"> 
  <img src=""> 
 
  <img src=""> 
@@ -134,6 +144,16 @@ To train the retriever and generator end-to-end, we treat the retrieved document
       author={Kelvin Guu and Kenton Lee and Zora Tung and Panupong Pasupat and Ming-Wei Chang},
       year={2020},
       eprint={2002.08909},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
+
+<a id="3">[3]</a>
+@misc{lewis2021retrievalaugmented,
+      title={Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks}, 
+      author={Patrick Lewis and Ethan Perez and Aleksandra Piktus and Fabio Petroni and Vladimir Karpukhin and Naman Goyal and Heinrich Küttler and Mike Lewis and Wen-tau Yih and Tim Rocktäschel and Sebastian Riedel and Douwe Kiela},
+      year={2021},
+      eprint={2005.11401},
       archivePrefix={arXiv},
       primaryClass={cs.CL}
 }
