@@ -81,7 +81,7 @@ consists of *m* instances. Each instance contains one question  <img src="https:
 (positive) passage  <img src="https://render.githubusercontent.com/render/math?math=p_{i}^{%2B}"> , along with *n* irrelevant (negative) passages  <img src="https://render.githubusercontent.com/render/math?math=p_{i,j}^{-}"> . We optimize the loss function as the negative log likelihood of the positive passage:
 
 
- <img src="https://render.githubusercontent.com/render/math?math=\qquad%20L(q_{i},p_{i}^{%2B},p_{i,1}^{-},\ldots,p_{i,n}^{-})\qquad\qquad(2)"> 
+ <img src="https://render.githubusercontent.com/render/math?math=\Large\qquad%20L(q_{i},p_{i}^{%2B},p_{i,1}^{-},\ldots,p_{i,n}^{-})\qquad\qquad(2)"> 
 
 
  <img src="https://render.githubusercontent.com/render/math?math==\Large\qquad-log\Large\frac{e^{sim(q_{i},p_{i}^{%2B})}}{e^{sim(q_{i},p_{i}^{%2B})}%2B\sum_{j=1}^ne^{sim(q_{i},p_{i,j}^{-})}}"> 
