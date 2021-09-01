@@ -47,8 +47,6 @@ d-dimensional vector, and retrieves k passages of which vectors are the closest 
 question vector. The similarity between the question and the passage is defined using
 the dot product of their vectors.
 
-![](images/similarity.png)
-
  <img src="https://render.githubusercontent.com/render/math?math=\Large sim(q,p)%20=E_{Q}(q)^{T}E_{P}(p)"> 
 
 The simpler inner product function is used for similarity calculation to improve the
