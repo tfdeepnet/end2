@@ -45,9 +45,11 @@ d-dimensional real-valued vectors and builds an index for all the M passages tha
 At run-time, DPR applies a different encoder Eq that maps the input question to a
 d-dimensional vector, and retrieves k passages of which vectors are the closest to the
 question vector. The similarity between the question and the passage is defined using
-the dot product of their vectors.
+the dot product of their vectors.[[1]](#1)
 
- <img src="https://render.githubusercontent.com/render/math?math=\Large sim(q,p)%20=E_{Q}(q)^{T}E_{P}(p)"> 
+![](images/similarity.png)
+
+ <img src="https://render.githubusercontent.com/render/math?math=sim(q,p)%20=E_{Q}(q)^{T}E_{P}(p)"> 
 
 The simpler inner product function is used for similarity calculation to improve the
 dense passage retriever by learning better encoders.
@@ -72,21 +74,43 @@ k passages with embeddings closest to vq.
 Training the encoders so that the dot-product similarity (Eq. (1)) becomes a good
 ranking function for retrieval.The goal is to create a vector space such that relevant
 pairs of questions and passages will have smaller distance (i.e., higher similarity )
-than the irrelevant ones, by learning a better embedding function.
+than the irrelevant ones, by learning a better embedding function.[[1]](#1)
 
 Let  <img src="https://render.githubusercontent.com/render/math?math=D%20=\{(q_{i},p_{i}^{%2B},p_{i,1}^{-},\ldots,p_{i,n}^{-})\}_{i=1}^n">  be the training data that
 consists of *m* instances. Each instance contains one question  <img src="https://render.githubusercontent.com/render/math?math=q_{i}">  and one relevant
 (positive) passage  <img src="https://render.githubusercontent.com/render/math?math=p_{i}^{%2B}"> , along with *n* irrelevant (negative) passages  <img src="https://render.githubusercontent.com/render/math?math=p_{i,j}^{-}"> . We optimize the loss function as the negative log likelihood of the positive passage:
 
 
- <img src="https://render.githubusercontent.com/render/math?math=\Large\qquad%20L(q_{i},p_{i}^{%2B},p_{i,1}^{-},\ldots,p_{i,n}^{-})\qquad\qquad(2)"> 
+ <img src="https://render.githubusercontent.com/render/math?math=\qquad%20L(q_{i},p_{i}^{%2B},p_{i,1}^{-},\ldots,p_{i,n}^{-})\qquad\qquad(2)"> 
 
 
  <img src="https://render.githubusercontent.com/render/math?math==\Large\qquad-log\Large\frac{e^{sim(q_{i},p_{i}^{%2B})}}{e^{sim(q_{i},p_{i}^{%2B})}%2B\sum_{j=1}^ne^{sim(q_{i},p_{i,j}^{-})}}"> 
 
 
- 
+### Positive and negative passages
 
+For retrieval problems, it is often the case that positive examples are available
+explicitly, while negative examples need to be selected from an extremely large pool.
+For instance, passages relevant to a question may be given in a QA dataset, or can be
+found using the answer. All other passages in the collection, while not specified
+explicitly, can be viewed as irrelevant by default. I consider any random passage from the corpus as negative.[[1]](#1)
+
+ <img src=""> 
+\cite{Dense Passage Retrieval for Open-Domain Question Answering
+Vladimir Karpukhin, Barlas O??guz, Sewon Miny, Patrick Lewis,
+Ledell Wu, Sergey Edunov, Danqi Chenz, Wen-tau Yih}
+ <img src=""> 
+
+## References
+<a id="1">[1]</a> 
+@misc{lewis2021retrievalaugmented,
+      title={Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks}, 
+      author={Patrick Lewis and Ethan Perez and Aleksandra Piktus and Fabio Petroni and Vladimir Karpukhin and Naman Goyal and Heinrich Küttler and Mike Lewis and Wen-tau Yih and Tim Rocktäschel and Sebastian Riedel and Douwe Kiela},
+      year={2021},
+      eprint={2005.11401},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
 
 
 
