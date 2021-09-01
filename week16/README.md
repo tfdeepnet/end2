@@ -91,6 +91,28 @@ For instance, passages relevant to a question may be given in a QA dataset, or c
 found using the answer. All other passages in the collection, while not specified
 explicitly, can be viewed as irrelevant by default. I consider any random passage from the corpus as negative.[[1]](#1)
 
+### Knowledge-Augmented generator 
+
+Given an input x and a retrieved document z, the knowledge-augmented encoder
+defines 
+ <img src="https://render.githubusercontent.com/render/math?math=\qquad p(y|z,x)"> .
+We join x and z into a single sequence that we feed into a Transformer (distinct from
+the one used in the retriever). This allows us to perform rich cross-attention between
+x and z before predicting y. See Figure 1 for a concrete example.[[2]](#2)
+
+![](images/knowledgeaugmented_generator.png)[[2]](#2)
+
+The model leverage two components: 
+
+* a retriever
+
+ <img src="https://render.githubusercontent.com/render/math?math=\qquad p(z|x)">  with parameters that returns (top-K truncated) distributions over text passages given a query x 
+
+* a generator
+
+ <img src="https://render.githubusercontent.com/render/math?math=\qquad p(y_{i}|x,z,y_{1:i-1})"> that generates a current token based on a context of the previous i - 1 tokens  <img src="https://render.githubusercontent.com/render/math?math=\qquad y_{1:i-1})"> , the original
+input x and a retrieved passage z.
+To train the retriever and generator end-to-end, we treat the retrieved document as a latent variable
  <img src=""> 
 
  <img src=""> 
@@ -106,6 +128,15 @@ explicitly, can be viewed as irrelevant by default. I consider any random passag
       primaryClass={cs.CL}
 }
 
+<a id="2">[2]</a>
+@misc{guu2020realm,
+      title={REALM: Retrieval-Augmented Language Model Pre-Training}, 
+      author={Kelvin Guu and Kenton Lee and Zora Tung and Panupong Pasupat and Ming-Wei Chang},
+      year={2020},
+      eprint={2002.08909},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
 
  <img src="https://render.githubusercontent.com/render/math?math=e^{i %2B\pi} =x%2B1"> 
 
