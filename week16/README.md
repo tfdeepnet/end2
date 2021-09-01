@@ -49,7 +49,7 @@ the dot product of their vectors.[[1]](#1)
 
 ![](images/similarity.png)
 
- <img src="https://render.githubusercontent.com/render/math?math=sim(q,p)%20=E_{Q}(q)^{T}E_{P}(p)"> 
+<!-- <img src="https://render.githubusercontent.com/render/math?math=\Large sim(x,z)%20=Embedding_{Q}(x)^{T}.Embedding_{doc}(z)"> -->
 
 The simpler inner product function is used for similarity calculation to improve the
 dense passage retriever by learning better encoders.
@@ -76,15 +76,15 @@ ranking function for retrieval.The goal is to create a vector space such that re
 pairs of questions and passages will have smaller distance (i.e., higher similarity )
 than the irrelevant ones, by learning a better embedding function.[[1]](#1)
 
-Let  <img src="https://render.githubusercontent.com/render/math?math=D%20=\{(q_{i},p_{i}^{%2B},p_{i,1}^{-},\ldots,p_{i,n}^{-})\}_{i=1}^n">  be the training data that
-consists of *m* instances. Each instance contains one question  <img src="https://render.githubusercontent.com/render/math?math=q_{i}">  and one relevant
-(positive) passage  <img src="https://render.githubusercontent.com/render/math?math=p_{i}^{%2B}"> , along with *n* irrelevant (negative) passages  <img src="https://render.githubusercontent.com/render/math?math=p_{i,j}^{-}"> . We optimize the loss function as the negative log likelihood of the positive passage:
+Let <!-- <img src="https://render.githubusercontent.com/render/math?math=D%20=\{(x_{i},z_{i}^{%2B},z_{i,1}^{-},\ldots,z_{i,n}^{-})\}_{i=1}^n"> --> be the training data that
+consists of *m* instances. Each instance contains one question <!-- <img src="https://render.githubusercontent.com/render/math?math=x_{i}"> --> and one relevant
+(positive) passage <!-- <img src="https://render.githubusercontent.com/render/math?math=z_{i}^{%2B}"> -->, along with *n* irrelevant (negative) passages <!-- <img src="https://render.githubusercontent.com/render/math?math=z_{i,j}^{-}"> -->. We optimize the loss function as the negative log likelihood of the positive passage:
 
 
- <img src="https://render.githubusercontent.com/render/math?math=\qquad%20L(q_{i},p_{i}^{%2B},p_{i,1}^{-},\ldots,p_{i,n}^{-})\qquad\qquad(2)"> 
+<!-- <img src="https://render.githubusercontent.com/render/math?math=\Large p(z|x)=\qquad%20L(x_{i},z_{i}^{%2B},z_{i,1}^{-},\ldots,z_{i,n}^{-})\qquad\qquad(2)"> -->
 
 
- <img src="https://render.githubusercontent.com/render/math?math==\Large\qquad-log\Large\frac{e^{sim(q_{i},p_{i}^{%2B})}}{e^{sim(q_{i},p_{i}^{%2B})}%2B\sum_{j=1}^ne^{sim(q_{i},p_{i,j}^{-})}}"> 
+<!-- <img src="https://render.githubusercontent.com/render/math?math==\Large\qquad-log\Large\frac{e^{sim(x_{i},z_{i}^{%2B})}}{e^{sim(x_{i},z_{i}^{%2B})}%2B\sum_{j=1}^ne^{sim(x_{i},z_{i,j}^{-})}}"> -->
 
 
 ### Positive and negative passages
@@ -95,11 +95,9 @@ For instance, passages relevant to a question may be given in a QA dataset, or c
 found using the answer. All other passages in the collection, while not specified
 explicitly, can be viewed as irrelevant by default. I consider any random passage from the corpus as negative.[[1]](#1)
 
- <img src=""> 
-\cite{Dense Passage Retrieval for Open-Domain Question Answering
-Vladimir Karpukhin, Barlas O??guz, Sewon Miny, Patrick Lewis,
-Ledell Wu, Sergey Edunov, Danqi Chenz, Wen-tau Yih}
- <img src=""> 
+<!-- <img src=""> -->
+
+<!-- <img src=""> -->
 
 ## References
 <a id="1">[1]</a> 
@@ -113,7 +111,7 @@ Ledell Wu, Sergey Edunov, Danqi Chenz, Wen-tau Yih}
 }
 
 
- <img src="https://render.githubusercontent.com/render/math?math=e^{i %2B\pi} =x%2B1"> 
+<!-- <img src="https://render.githubusercontent.com/render/math?math=e^{i %2B\pi} =x%2B1"> -->
 
 The Loss function (one of the many you'd implement)
 
