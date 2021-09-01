@@ -39,17 +39,15 @@ The goal of dense passage retriever (DPR) is to index all the M passages in a
 low-dimensional and continuous space, such that it can retrieve efficiently the top
 k passages relevant to the input question for the reader at run-time.
 
-dense passage retriever (DPR) uses a dense encoder Ep which maps any text passage to a
+dense passage retriever (DPR) uses a dense encoder Ez which maps any text passage to a
 d-dimensional real-valued vectors and builds an index for all the M passages that we will use for retrieval.
 
-At run-time, DPR applies a different encoder Eq that maps the input question to a
+At run-time, DPR applies a different encoder Ex that maps the input question to a
 d-dimensional vector, and retrieves k passages of which vectors are the closest to the
 question vector. The similarity between the question and the passage is defined using
 the dot product of their vectors.[[1]](#1)
 
-![](images/similarity.png)
-
- <img src="https://render.githubusercontent.com/render/math?math=\Large sim(x,z)%20=Embedding_{Q}(x)^{T}.Embedding_{doc}(z)"> 
+ <img src="https://render.githubusercontent.com/render/math?math=\Large sim(x,z)%20=Embedding_{Q}(x)^{T}.Embedding_{doc}(z)\qquad(1)"> 
 
 The simpler inner product function is used for similarity calculation to improve the
 dense passage retriever by learning better encoders.
@@ -60,14 +58,12 @@ Use pre-trained BERT encoders for question and passage
 
 #### inference
 
-During inference time, the passage encoder Ep will be applied to all the passages and
-index them using FAISS offline.
+During inference time, the passage encoder  <img src="https://render.githubusercontent.com/render/math?math=E_{z}">  will be applied to all the passages and index them using FAISS offline.
 
 FAISS is an extremely efficient, open-source library for similarity search and
 clustering of dense vectors, which can easily be applied to billions of vectors. 
 
-Given a question q at run-time, we derive its embedding vq = Eq(q) and retrieve the top
-k passages with embeddings closest to vq.
+Given a question *x* at run-time, we derive its embedding  <img src="https://render.githubusercontent.com/render/math?math=v_{x}=E_{x}(x)">  and retrieve the top k passages with embeddings closest to  <img src="https://render.githubusercontent.com/render/math?math=v_{x}"> .
 
 ### Training the encoders
 
